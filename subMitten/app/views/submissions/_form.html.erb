@@ -1,0 +1,38 @@
+<% button_text = submission.persisted? ? "Update Submission" : "Create Submission" %>
+<% form_action = submission.persisted? ? submission_url(submission) : submissions_url %>
+<% hidden_input = submission.persisted? ? "<input type='hidden' name='_method' value='PATCH'>".html_safe : "" %>
+
+<form action="<%= form_action %>" method="post">
+
+  <label for="submission_journal_id">Journal:</label>
+  <select id="submissions_journal_id"
+          name="submission[journal_id]">
+    <% journals.each do |journal| %>
+      <option value="<%= journal.id %>"
+              <%= "selected" if submission.journal == journal %>>
+        <%= journal.name %>
+      </option>
+    <% end %>
+  </select>
+
+  <br>
+  <br>
+  <label>Poems</label>
+  <br>
+  <% poems.each do |poem| %>
+    <label id="submission_poem_id_<%=poem.id%>">
+      <%= poem.title %>
+    </label>
+    <input type="checkbox"
+           name="submission[poem_ids][]"
+           value="<%= poem.id %>"
+           id="submission_poem_id_<%=poem.id%>"
+           <%= "checked" if submission.poems.include?(poem) %>>
+    <br>
+  <% end %>
+  <%= hidden_token %>
+  <%= hidden_input %>
+
+  <input type="submit" value="<%= button_text %>">
+
+</form>

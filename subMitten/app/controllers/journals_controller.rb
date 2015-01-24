@@ -20,7 +20,7 @@ class JournalsController < ApplicationController
     if @journal.save
       redirect_to journals_url
     else
-      flash[now] = @journal.errors.full_messages
+      flash[:now] = @journal.errors.full_messages
     end
   end
 
@@ -34,7 +34,7 @@ class JournalsController < ApplicationController
     if @journal.update(journal_params)
       redirect_to journals_url
     else
-      flash[errors] = @journal.errors.full_messages
+      flash[:now] = @journal.errors.full_messages
       render :edit
     end
   end

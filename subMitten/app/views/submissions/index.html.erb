@@ -1,0 +1,19 @@
+<h1>All your Submissions!</h1>
+
+<a href="<%= new_submission_url %>">New Submission!</a>
+
+<ul>
+  <% @submissions.each do |submission|  %>
+  <a href="<%= submission_url(submission)%>">
+    <%= submission.journal.name %>--<%= submission.created_at %>
+  </a>
+  <a href="<%= edit_submission_url(submission) %>">Edit</a>
+  <form action="<%= submission_url(submission) %>" method="post">
+    <%= hidden_token %>
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete!">
+  </form>
+  <% end %>
+</ul>
+
+<a href="<%= root_url %>">Back!</a>

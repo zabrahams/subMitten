@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 
   resources :poems
   resources :journals
+  resources :submissions
 
 end

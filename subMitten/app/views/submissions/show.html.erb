@@ -1,0 +1,9 @@
+<h1><%= "#{@submission.journal.name}--#{@submission.date_made}" %></h1>
+
+<ul>
+  <% @submission.poems.each do |poem| %>
+    <li><%= poem.title %></li>
+  <% end %>
+</ul>
+
+<a href="<%= submissions_url %>">Back!</a>
