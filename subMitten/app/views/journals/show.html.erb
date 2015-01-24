@@ -1,0 +1,30 @@
+<h1><%= @journal.name %></h1>
+
+<table>
+  <tr>
+    <th>name</th>
+    <td><%= @journal.name %></td>
+  </tr>
+  <tr>
+    <th>email</th>
+    <td><%= @journal.email %></td>
+  </tr>
+  <tr>
+    <th>phone number</th>
+    <td><%= @journal.phone_number %></td>
+  </tr>
+  <tr>
+    <th>url</th>
+    <td><%= @journal.url %></td>
+  </tr>
+  <tr>
+    <th>address</th>
+    <td><%= @journal.address %></td>
+  </tr>
+  <tr>
+    <th>simultaneous submiission</th>
+    <td><%= @journal.simul_submit %></td>
+  </tr>
+</table>
+
+<a href="<%= journals_url %>">Back</a>

@@ -1,0 +1,17 @@
+<h1>All your Journals!</h1>
+
+<a href="<%= new_journal_url %>">New Journal!</a>
+
+<ul>
+  <% @journals.each do |journal|  %>
+  <a href="<%= journal_url(journal)%>"><%= journal.name %></a>
+  <a href="<%= edit_journal_url(journal) %>">Edit</a>
+  <form action="<%= journal_url(journal) %>" method="post">
+    <%= hidden_token %>
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete!">
+  </form>
+  <% end %>
+</ul>
+
+<a href="<%= root_url %>">Back!</a>

@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150124010357) do
+ActiveRecord::Schema.define(version: 20150124021553) do
+
+  create_table "journals", force: true do |t|
+    t.string   "name",         null: false
+    t.string   "email"
+    t.text     "address"
+    t.boolean  "simul_submit"
+    t.string   "url"
+    t.string   "phone_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "journals", ["name"], name: "index_journals_on_name", unique: true
 
   create_table "poems", force: true do |t|
     t.string   "title",                       null: false

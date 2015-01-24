@@ -1,0 +1,52 @@
+<% button_text = journal.persisted? ? "Update Journal" : "Add Journal" %>
+<% form_action = journal.persisted? ? journal_url(journal) : journals_url %>
+<% hidden_input = journal.persisted? ? "<input type='hidden' name='_method' value='PATCH'>".html_safe : "" %>
+
+<form action="<%= form_action %>" method="post">
+
+  <label for="journal_name">Name:</label>
+  <input type="text" id="journal_name" name="journal[name]" value="<%= journal.name %>">
+  <br>
+  <br>
+
+  <label for="journal_url">URL:</label>
+  <input type="text" id="journal_url" value="<%= journal.url %>" name="journal[url]">
+  <br>
+  <br>
+
+  <label for="journal_email">email:</label>
+  <input type="text" id="journal_email" value="<%= journal.email %>" name="journal[email]">
+  <br>
+  <br>
+
+  <label for="journal_phone_number">phone:</label>
+  <input type="text" id="journal_phone_number" value="<%= journal.phone_number %>" name="journal[phone_number]">
+  <br>
+  <br>
+
+  <label for="journal_address">Address:</label>
+  <textarea name="journal[address]" id="journal_address"><%= journal.address %></textarea>
+    <br>
+    <br>
+
+  <label for "journal_simul_submit_allowed">Simultaneous Submission Allowed:</label>
+  <input type="radio"
+         name="journal[simul_submit]"
+         id="journal_simul_submit"
+         value="true">
+  <br>
+  <label for "journal_simul_submit_not_allowed">Simultaneous Submission Not Allowed</label>
+  <input type="radio"
+  name="journal[simul_submit]"
+  id="journal_simul_submit_not_allowed"
+  value="false">
+  <br>
+  <br>
+
+  <%= hidden_token %>
+  <%= hidden_input %>
+
+  <input type="submit" value="<%= button_text %>">
+  <br>
+  <br>
+</form>
