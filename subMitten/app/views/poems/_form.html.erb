@@ -1,0 +1,18 @@
+<% button_text = poem.persisted? ? "Update Poem" : "Add Poem" %>
+<% form_action = poem.persisted? ? poem_url(poem) : poems_url %>
+<% hidden_input = poem.persisted? ? "<input type='hidden' name='_method' value='PATCH'>".html_safe : "" %>
+
+<form action="<%= form_action %>" method="post">
+
+  <label for="poem_title">Title:</label>
+  <input type="text" id="poem_title" name="poem[title]" value="<%= poem.title %>">
+
+  <label for="poem_written_on">Written On:</label>
+  <input type="date" id="poem_written_on" value="<%= poem.written_on %>" name="poem[written_on]">
+
+  <%= hidden_token %>
+  <%= hidden_input %>
+
+  <input type="submit" value="<%= button_text %>">
+
+</form>

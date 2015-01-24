@@ -1,0 +1,15 @@
+<h1>All your Poems!</h1>
+
+<a href="<%= new_poem_url %>">New Poem!</a>
+
+<ul>
+<% @poems.each do |poem|  %>
+  <a href="<%= poem_url(poem)%>"><%= poem.title %></a>
+  <a href="<%= edit_poem_url(poem) %>">Edit</a>
+  <form action="<%= poem_url(poem) %>" method="post">
+    <%= hidden_token %>
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete!">
+  </form>
+<% end %>
+</ul>

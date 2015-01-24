@@ -1,0 +1,18 @@
+<h1><%= @poem.title %></h1>
+
+<table>
+  <tr>
+    <th>title</th>
+    <td><%= @poem.title %></td>
+  </tr>
+  <tr>
+    <th>written_on</th>
+    <td><%= @poem.written_on %></td>
+  </tr>
+  <tr>
+    <th>status:</th>
+    <td><%= @poem.status %></td>
+  </tr>
+</table>
+
+<a href="<%= poems_url %>">Back</a>
