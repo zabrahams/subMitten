@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150124021553) do
+ActiveRecord::Schema.define(version: 20150124032434) do
 
   create_table "journals", force: true do |t|
     t.string   "name",         null: false
@@ -33,5 +33,27 @@ ActiveRecord::Schema.define(version: 20150124021553) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "submission_poems", force: true do |t|
+    t.integer  "submission_id",                     null: false
+    t.integer  "poem_id",                           null: false
+    t.string   "result",        default: "PENDING"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "submission_poems", ["poem_id"], name: "index_submission_poems_on_poem_id"
+  add_index "submission_poems", ["submission_id", "poem_id"], name: "index_submission_poems_on_submission_id_and_poem_id", unique: true
+  add_index "submission_poems", ["submission_id"], name: "index_submission_poems_on_submission_id"
+
+  create_table "submissions", force: true do |t|
+    t.integer  "journal_id",                     null: false
+    t.datetime "date_made",                      null: false
+    t.string   "result",     default: "PENDING"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "submissions", ["journal_id"], name: "index_submissions_on_journal_id"
 
 end
