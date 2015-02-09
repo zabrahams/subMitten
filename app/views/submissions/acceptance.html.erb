@@ -1,0 +1,19 @@
+<h1>Congratulations!!!!!</h1>
+
+<h2>Which Poems were picked up?</h2>
+
+<form action="<%= submission_url(@submission) %>" method="POST">
+<% @submission.poems.each do |poem| %>
+  <label id="submission_accepted_poem_id_<%=poem.id%>">
+    <%= poem.title %>
+  </label>
+  <input type="checkbox"
+         name="submission[accepted_poem_ids][]"
+         value="<%= poem.id %>"
+         id="submission_accepted_poem_id_<%=poem.id%>">
+  <br>
+<% end %>
+<input type="hidden" name="submission[result]" value="ACCEPTANCE">
+<%= hidden_token %>
+<input type="hidden" name="_method" value="PATCH">
+<input type="submit" value="Post Acceptances!">

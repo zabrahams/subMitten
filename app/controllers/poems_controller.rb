@@ -20,7 +20,6 @@ class PoemsController < ApplicationController
     if @poem.save
       redirect_to poem_url(@poem)
     else
-      fail
       flash[:now] = @poem.errors.full_messages
       render :new
     end

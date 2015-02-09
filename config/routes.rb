@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :poems
   resources :journals
-  resources :submissions
-
+  resources :submissions do
+    get 'acceptance', on: :member
+  end
 end

@@ -1,9 +1,24 @@
 <h1><%= "#{@submission.journal.name}--#{@submission.date_made}" %></h1>
 
+<h2>Result: <%= @submission.result %></h2>
+
 <ul>
   <% @submission.poems.each do |poem| %>
     <li><%= poem.title %></li>
   <% end %>
 </ul>
+
+<% if @submission.result == "PENDING" %>
+
+  <h2>Result?</h2>
+  <form action="<%= submission_url(@submission) %>" method="POST">
+    <%= hidden_token %>
+    <input type="hidden" name="submission[result]" value="REJECTION">
+    <input type="hidden" name="_method" value="PATCH">
+    <input type="submit" value="Rejection">
+  </form>
+  <br>
+  <a href="<%= acceptance_submission_url(@submission) %>">Acceptance</a>
+<% end %>
 
 <a href="<%= submissions_url %>">Back!</a>

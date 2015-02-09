@@ -25,17 +25,17 @@ table name: poems
 
 table name: journals
 
-column      | type      | properties            |
-------------|-----------|-----------------------|
-id          | :integer  | primary key, not null |
-name        | :string   | not null              |
-email       | :string   |                       |
-address     | :text     |                       |
-url         | :text     |                       |
-simul_submit| :boolean  |                       |
-phone_number| :string   |                       |
-created_at  | :datetime | not null              |
-updated_at  | :datetime | not null              |
+column       | type      | properties            |
+-------------|-----------|-----------------------|
+id           | :integer  | primary key, not null |
+name         | :string   | not null              |
+email        | :string   |                       |
+address      | :text     |                       |
+url          | :text     |                       |
+simul_submit | :boolean  |                       |
+phone_number | :string   |                       |
+created_at   | :datetime | not null              |
+updated_at   | :datetime | not null              |
 
 ### submissions:
 

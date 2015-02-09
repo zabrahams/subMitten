@@ -37,6 +37,7 @@ class SubmissionsController < ApplicationController
 
   def update
     @submission = Submission.find(params[:id])
+
     if @submission.update(submission_params)
       redirect_to submissions_url
     else
@@ -51,10 +52,15 @@ class SubmissionsController < ApplicationController
     redirect_to submissions_url
   end
 
+  def acceptance
+    @submission = Submission.includes(:poems).find(params[:id])
+    render :acceptance
+  end
+
   private
 
   def submission_params
-    params.require(:submission).permit(:journal_id, poem_ids: [])
+    params.require(:submission).permit(:journal_id, :result, poem_ids: [], accepted_poem_ids: [])
   end
 
 
