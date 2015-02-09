@@ -27,4 +27,15 @@
   </tr>
 </table>
 
+<h2>Submitted Poems</h2>
+<% @journal.submissions.each do |submission| %>
+  <h3><%= submission.date_made %></h3>
+  <ul>
+    <% submission.poems.each do |poem| %>
+      <li><%= poem.title %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
 <a href="<%= journals_url %>">Back</a>

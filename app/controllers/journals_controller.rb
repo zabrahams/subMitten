@@ -6,7 +6,7 @@ class JournalsController < ApplicationController
   end
 
   def show
-    @journal = Journal.find(params[:id])
+    @journal = Journal.includes(submissions: :poems,).find(params[:id])
     render :show
   end
 
