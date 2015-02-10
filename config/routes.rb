@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :submissions do
     get 'acceptance', on: :member
   end
+  resources :notes, only: [:create, :destroy]
 end

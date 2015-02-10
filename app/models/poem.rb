@@ -5,5 +5,6 @@ class Poem < ActiveRecord::Base
 
   has_many :submission_poems, dependent: :destroy
   has_many :submissions, through: :submission_poems, source: :submission
+  has_many :notes, as: :notable
 
 end

@@ -24,4 +24,6 @@
   <% end %>
 </ul>
 
+<%= render 'notes/note', notes: @poem.notes, notable_type: "Poem", notable_id: @poem.id %>
+
 <a href="<%= poems_url %>">Back</a>

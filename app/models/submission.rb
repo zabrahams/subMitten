@@ -5,6 +5,7 @@ class Submission < ActiveRecord::Base
   belongs_to :journal
   has_many :submission_poems, inverse_of: :submission, dependent: :destroy
   has_many :poems, through: :submission_poems, source: :poem
+  has_many :notes, as: :notable
 
   after_create :set_poem_status_to_submitted
   after_update :reset_poem_status, if: :rejected?

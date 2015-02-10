@@ -38,4 +38,6 @@
 <% end %>
 
 
+<%= render 'notes/note', notes: @journal.notes, notable_type: "Journal", notable_id: @journal.id %>
+
 <a href="<%= journals_url %>">Back</a>

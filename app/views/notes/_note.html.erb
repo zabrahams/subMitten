@@ -1,0 +1,23 @@
+<h3>Notes</h3>
+<ul>
+  <% notes.each do |note| %>
+    <li>
+      <%= note.body %>
+      <form action="<%= note_url(note) %>" method="POST">
+        <%= hidden_token %>
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete Note">
+      </form>
+    </li>
+
+  <% end %>
+</ul>
+<h3>New Note</h3>
+<form action="<%= notes_url %>" method="post">
+  <label for="note_body"></label>
+  <textarea name="note[body]" id="note_body"></textarea>
+  <input type="hidden" name="note[notable_type]" value="<%= notable_type %>">
+  <input type="hidden" name="note[notable_id]" value="<%= notable_id%>">
+  <%= hidden_token %>
+  <input type="submit" value="Post Note">
+</form>

@@ -21,4 +21,6 @@
   <a href="<%= acceptance_submission_url(@submission) %>">Acceptance</a>
 <% end %>
 
+<%= render 'notes/note', notes: @submission.notes, notable_type: "Submission", notable_id: @submission.id %>
+
 <a href="<%= submissions_url %>">Back!</a>
